@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "527114410574",
+    "project_id": "fir-login-roche",
+    "storage_bucket": "fir-login-roche.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527114410574:android:e31569120721dbf5f1811f",
+        "android_client_info": {
+          "package_name": "com.example.emptycomposeactivity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527114410574-fajpl8qo64u218j8ujq7qeep21j531v9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.emptycomposeactivity",
+            "certificate_hash": "766364a9fc45bcc8ee2fb5fe5b2247d0fa1c5c2d"
+          }
+        },
+        {
+          "client_id": "527114410574-a2b3ddj7d2rrb5o89tka2p9kpsptpj9r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmyic1KvEhsMZzDNuiivdcAg9PQ6tdsO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527114410574-a2b3ddj7d2rrb5o89tka2p9kpsptpj9r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
