@@ -6,13 +6,15 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.emptycomposeactivity.SETTINGS_SCREEN
 import com.example.emptycomposeactivity.data.WellnessTaskDatabase
 import com.example.emptycomposeactivity.model.WellnessTask
 import com.example.emptycomposeactivity.repository.WellnessTaskRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class WellnessViewModel(application: Application) : AndroidViewModel(application) {
+class WellnessViewModel (application: Application) : AndroidViewModel(application) {
     /**
      * Don't expose the mutable list of tasks from outside the ViewModel.
      * Instead define _tasks and tasks. _tasks is internal and mutable inside the ViewModel.
@@ -52,6 +54,10 @@ class WellnessViewModel(application: Application) : AndroidViewModel(application
         viewModelScope.launch( Dispatchers.IO ) {
             repository.updateTask(wellnessTask)
         }
+    }
+
+    fun onSettingsClick(openScreen: (String) -> Unit){
+        openScreen(SETTINGS_SCREEN)
     }
 
 }
