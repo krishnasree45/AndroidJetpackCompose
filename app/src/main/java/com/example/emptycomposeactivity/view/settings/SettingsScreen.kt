@@ -1,6 +1,5 @@
 package com.example.emptycomposeactivity.view.settings
 
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -10,21 +9,19 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.emptycomposeactivity.view.login.BasicToolbar
-import com.example.emptycomposeactivity.viewmodel.SettingsViewModel
 import com.example.emptycomposeactivity.R
-import javax.inject.Inject
 
 @Composable
-fun SettingsScreen (
+fun SettingsScreen(
     openScreen: (String) -> Unit,
-    settingsViewModel: SettingsViewModel = viewModel(),
+    restartApp: (String) -> Unit,
+    settingsViewModel: SettingsViewModel = hiltViewModel(),
     modifier: Modifier = Modifier
 ) {
     val uiState by settingsViewModel.uiState.collectAsState(
@@ -56,7 +53,7 @@ fun SettingsScreen (
                         painter = painterResource(id = R.drawable.ic_sign_in),
                         contentDescription = "Sign In icon"
                     )
-                    Spacer(modifier = Modifier.weight(1f))
+                    Spacer(modifier = Modifier.padding(4.dp))
                     Text(text = "Sign In")
                 }
             }
@@ -67,14 +64,14 @@ fun SettingsScreen (
                         painter = painterResource(id = R.drawable.ic_create_account),
                         contentDescription = "Create Account icon"
                     )
-                    Spacer(modifier = Modifier.weight(1f))
+                    Spacer(modifier = Modifier.padding(4.dp))
                     Text(text = "Create Account")
                 }
             }
 
 
         } else { // If the user is signed in display sign out
-            Button(onClick = { /*TODO call settingsViewModel.createAccount()*/ }) {
+            Button(onClick = { settingsViewModel.onSignOutClick(restartApp) }) {
                 Row() {
                     Image(
                         painter = painterResource(id = R.drawable.ic_exit),

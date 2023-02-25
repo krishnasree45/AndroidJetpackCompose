@@ -14,13 +14,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.emptycomposeactivity.viewmodel.LoginViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
 fun LoginScreen(
     openAndPopUp: (String, String) -> Unit,
-    loginViewModel: LoginViewModel = viewModel(),
+    loginViewModel: LoginViewModel = hiltViewModel(),
     modifier: Modifier = Modifier,
 ) {
 

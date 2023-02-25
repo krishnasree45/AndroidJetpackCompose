@@ -1,14 +1,25 @@
-package com.example.emptycomposeactivity.viewmodel
+package com.example.emptycomposeactivity.view.signup
 
 import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.emptycomposeactivity.SETTINGS_SCREEN
+import com.example.emptycomposeactivity.SIGN_UP_SCREEN
 import com.example.emptycomposeactivity.common.ext.isValidEmail
 import com.example.emptycomposeactivity.common.ext.isValidPassword
 import com.example.emptycomposeactivity.common.ext.passwordMatches
+import com.example.emptycomposeactivity.model.service.LoginService
+import com.example.emptycomposeactivity.model.service.StorageService
 import com.example.emptycomposeactivity.view.signup.SignUpUiState
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SignUpViewModel : ViewModel() {
+@HiltViewModel
+class SignUpViewModel @Inject constructor(
+    private val loginService: LoginService,
+) : ViewModel() {
 
     var uiState = mutableStateOf(SignUpUiState())
         private set
@@ -46,9 +57,9 @@ class SignUpViewModel : ViewModel() {
             return
         }
 
-//        launchCatching {
-//            accountService.linkAccount(email, password)
-//            openAndPopUp(SETTINGS_SCREEN, SIGN_UP_SCREEN)
-//        }
+        viewModelScope.launch() {
+            loginService.linkAccount(email, password)
+            openAndPopUp(SETTINGS_SCREEN, SIGN_UP_SCREEN)
+        }
     }
 }

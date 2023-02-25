@@ -11,6 +11,7 @@ class LoginAppState(
 ) {
 
     fun popUp() {
+        Log.d("LoginAppState", "popUp()")
         navController.popBackStack()
     }
 

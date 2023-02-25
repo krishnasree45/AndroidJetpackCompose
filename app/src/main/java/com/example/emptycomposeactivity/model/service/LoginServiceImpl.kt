@@ -1,5 +1,6 @@
 package com.example.emptycomposeactivity.model.service
 
+import android.util.Log
 import com.example.emptycomposeactivity.model.User
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
@@ -28,6 +29,7 @@ class LoginServiceImpl @Inject constructor(
         get() = firebaseAuth.currentUser != null
 
     override suspend fun authenticate(email: String, password: String) {
+        Log.d("LoginViewModel", "authenticate")
         firebaseAuth.signInWithEmailAndPassword(email, password)
     }
 

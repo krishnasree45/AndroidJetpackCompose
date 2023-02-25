@@ -1,7 +1,6 @@
-package com.example.emptycomposeactivity.viewmodel
+package com.example.emptycomposeactivity.view.login
 
 import android.util.Log
-import android.widget.Toast
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,12 +8,11 @@ import com.example.emptycomposeactivity.LOGIN_SCREEN
 import com.example.emptycomposeactivity.SETTINGS_SCREEN
 import com.example.emptycomposeactivity.common.ext.isValidEmail
 import com.example.emptycomposeactivity.model.service.LoginService
-import com.example.emptycomposeactivity.view.login.LoginUiState
-import kotlinx.coroutines.coroutineScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.coroutines.coroutineContext
 
+@HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginService: LoginService,
 ): ViewModel() {
@@ -44,6 +42,7 @@ class LoginViewModel @Inject constructor(
             Log.e("LoginViewModel", "Password is blank")
             return
         }
+
         viewModelScope.launch {
             loginService.authenticate(email, password)
             openAndPopUp(SETTINGS_SCREEN, LOGIN_SCREEN)

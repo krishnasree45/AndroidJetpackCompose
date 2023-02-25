@@ -14,17 +14,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.emptycomposeactivity.view.login.BasicToolbar
-import com.example.emptycomposeactivity.viewmodel.SignUpViewModel
 
 @Composable
 fun SignUpScreen(
     openAndPopUp: (String, String) -> Unit,
     modifier: Modifier = Modifier,
-    signUpViewModel: SignUpViewModel = viewModel()
+    signUpViewModel: SignUpViewModel = hiltViewModel()
 ) {
     val uiState by signUpViewModel.uiState
     BasicToolbar(title = "Create Account")
@@ -39,7 +38,7 @@ fun SignUpScreen(
     ) {
         //Email
         OutlinedTextField(
-            value = "Email",
+            value = uiState.email,
             onValueChange = signUpViewModel::onEmailChange,
             Modifier
                 .fillMaxWidth()
@@ -50,23 +49,25 @@ fun SignUpScreen(
 
         //Password
         OutlinedTextField(
-            value = "Password",
+            value = uiState.password,
             onValueChange = signUpViewModel::onPasswordChange,
             Modifier
                 .fillMaxWidth()
                 .padding(16.dp, 4.dp),
             placeholder = { Text("Password") },
+            visualTransformation = PasswordVisualTransformation(),
             leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "Lock") },
         )
 
         //Repeat Password
         OutlinedTextField(
-            value = "Password",
-            onValueChange = signUpViewModel::onPasswordChange,
+            value = uiState.repeatPassword,
+            onValueChange = signUpViewModel::onRepeatPasswordChange,
             Modifier
                 .fillMaxWidth()
                 .padding(16.dp, 4.dp),
             placeholder = { Text("Repeat Password") },
+            visualTransformation = PasswordVisualTransformation(),
             leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "Lock") },
 
             )
