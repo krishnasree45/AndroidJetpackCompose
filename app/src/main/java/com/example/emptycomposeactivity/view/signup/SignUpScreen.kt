@@ -37,13 +37,22 @@ fun SignUpScreen(
 
     when (status) {
         NOT_VALID_PWD -> {
-            Toast.makeText(LocalContext.current,"Error: Password is not valid!", Toast.LENGTH_SHORT ).show()
+            Toast.makeText(
+                LocalContext.current,
+                "Error: Password is not valid!",
+                Toast.LENGTH_SHORT
+            ).show()
         }
         PWD_DOESNT_MATCH -> {
-            Toast.makeText(LocalContext.current,"Error: Passwords do not match!", Toast.LENGTH_SHORT ).show()
+            Toast.makeText(
+                LocalContext.current,
+                "Error: Passwords do not match!",
+                Toast.LENGTH_SHORT
+            ).show()
         }
         NOT_VALID_EMAIL -> {
-            Toast.makeText(LocalContext.current,"Error: Email is not valid!", Toast.LENGTH_SHORT ).show()
+            Toast.makeText(LocalContext.current, "Error: Email is not valid!", Toast.LENGTH_SHORT)
+                .show()
         }
     }
 

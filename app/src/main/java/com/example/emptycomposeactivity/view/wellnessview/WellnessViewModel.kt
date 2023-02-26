@@ -13,7 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class WellnessViewModel @Inject constructor(
     private val storageService: StorageService,
-): ViewModel(){
+) : ViewModel() {
 
     val tasks = storageService.tasks
 
@@ -25,7 +25,7 @@ class WellnessViewModel @Inject constructor(
 
     fun onSettingsClick(openScreen: (String) -> Unit) = openScreen(SETTINGS_SCREEN)
 
-    fun onDeleteTask(task: WellnessTask){
+    fun onDeleteTask(task: WellnessTask) {
         viewModelScope.launch { storageService.delete(taskId = task.id) }
     }
 

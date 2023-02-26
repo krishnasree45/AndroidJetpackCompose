@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginService: LoginService,
-): ViewModel() {
+) : ViewModel() {
     var uiState = mutableStateOf(LoginUiState())
         private set
 
@@ -28,8 +28,8 @@ class LoginViewModel @Inject constructor(
         uiState.value = uiState.value.copy(email = newEmail)
     }
 
-    fun onPasswordEdit(newPwd: String){
-        uiState.value = uiState.value.copy(password = newPwd,)
+    fun onPasswordEdit(newPwd: String) {
+        uiState.value = uiState.value.copy(password = newPwd)
     }
 
     fun onSignInClick(openAndPopUp: (String, String) -> Unit) {

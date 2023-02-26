@@ -9,7 +9,7 @@ interface StorageService {
 
     suspend fun getTask(taskId: String): WellnessTask?
 
-    suspend fun save(task: WellnessTask): String
+    suspend fun save(task: WellnessTask)
     suspend fun update(task: WellnessTask)
     suspend fun delete(taskId: String)
     suspend fun deleteAllForUser(userId: String)

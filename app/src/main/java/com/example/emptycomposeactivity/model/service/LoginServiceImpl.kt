@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class LoginServiceImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
-) : LoginService{
+) : LoginService {
     override val currentUser: Flow<User>
         get() = callbackFlow {
             val listener = FirebaseAuth.AuthStateListener { auth ->
@@ -43,7 +43,7 @@ class LoginServiceImpl @Inject constructor(
     }
 
     override suspend fun signOut() {
-        if(firebaseAuth.currentUser!!.isAnonymous){
+        if (firebaseAuth.currentUser!!.isAnonymous) {
             firebaseAuth.currentUser!!.delete()
         } else {
             firebaseAuth.signOut()

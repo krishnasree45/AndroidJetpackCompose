@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
  */
 
-package com.example.makeitso.model.service.module
+package com.example.emptycomposeactivity.module
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -29,7 +29,9 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 object FirebaseModule {
-  @Provides fun auth(): FirebaseAuth = Firebase.auth
+    @Provides
+    fun auth(): FirebaseAuth = Firebase.auth
 
-  @Provides fun firestore(): FirebaseFirestore = Firebase.firestore
+    @Provides
+    fun firestore(): FirebaseFirestore = Firebase.firestore
 }

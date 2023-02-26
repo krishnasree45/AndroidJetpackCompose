@@ -17,7 +17,7 @@ import javax.inject.Inject
 class SettingsViewModel @Inject constructor(
     private val loginService: LoginService,
     private val storageService: StorageService,
-    ) : ViewModel() {
+) : ViewModel() {
     val uiState = loginService.currentUser.map { SettingsUiState(it.isAnonymous) }
 
     fun onLoginClick(openScreen: (String) -> Unit) {

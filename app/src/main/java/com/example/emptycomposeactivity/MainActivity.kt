@@ -11,14 +11,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-//            EmptyComposeActivityTheme() {
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colors.background,
-//                ) {
-//                    WellnessScreen()
-//                }
-//            }
             LoginApp()
 
         }

@@ -71,7 +71,7 @@ fun NavGraphBuilder.LoginAppGraph(appState: LoginAppState) {
     composable(SETTINGS_SCREEN) {
         SettingsScreen(
             openScreen = { route -> appState.navigate(route) },
-            restartApp = { route -> appState.clearAndNavigate(route)}
+            restartApp = { route -> appState.clearAndNavigate(route) }
         )
     }
 }

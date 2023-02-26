@@ -85,9 +85,11 @@ fun SettingsScreen(
                 }
             }
 
-            Spacer(modifier = Modifier
-                .fillMaxWidth()
-                .padding(4.dp))
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(4.dp)
+            )
 
             Button(onClick = { settingsViewModel.onDeleteMyAccountClick(restartApp) }) {
                 Row() {

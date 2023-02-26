@@ -6,5 +6,3 @@ const val WELLNESS_SCREEN = "WellnessScreen"
 const val SETTINGS_SCREEN = "SettingsScreen"
 const val EDIT_TASK_SCREEN = "EditTaskScreen"
 const val FIRST_SCREEN = "FirstScreen"
-
-const val TASK_ID = "taskId"

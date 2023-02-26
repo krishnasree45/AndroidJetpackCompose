@@ -16,10 +16,10 @@ class EditTaskViewModel @Inject constructor(
 ) : ViewModel() {
     val task = mutableStateOf(WellnessTask())
 
-    fun onDoneClick(popUpScreen: () -> Unit,) {
+    fun onDoneClick(popUpScreen: () -> Unit) {
         Log.d("EditTaskViewModel", "onDoneClick")
-        viewModelScope.launch (
-             block = {
+        viewModelScope.launch(
+            block = {
                 val editedTask = task.value
                 Log.d("EditTaskViewModel", "Title of editedTask: ${editedTask.label}")
                 Log.d("EditTaskViewModel", "Id of editedTask: ${editedTask.id}")
@@ -27,7 +27,7 @@ class EditTaskViewModel @Inject constructor(
                     Log.d("EditTaskViewModel", "editedTaskId is blank")
                     storageService.save(editedTask)
                 } else {
-                    Log.d("EditTaskViewModel", "editedTaskId is blank")
+                    Log.d("EditTaskViewModel", "editedTaskIFd is blank")
                     storageService.update(editedTask)
                 }
                 Log.d("EditTaskViewModel", "Before popUpScreen()")

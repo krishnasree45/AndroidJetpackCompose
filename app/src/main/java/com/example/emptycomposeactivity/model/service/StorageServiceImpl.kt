@@ -28,9 +28,9 @@ constructor(private val firestore: FirebaseFirestore, private val auth: LoginSer
     override suspend fun getTask(taskId: String): WellnessTask? =
         currentCollection(auth.currentUserId).document().get().await().toObject()
 
-    override suspend fun save(task: WellnessTask): String =
-        currentCollection(auth.currentUserId).add(task).await().id
-
+    override suspend fun save(task: WellnessTask) {
+        currentCollection(auth.currentUserId).add(task)
+    }
 
     override suspend fun update(task: WellnessTask): Unit {
         currentCollection(auth.currentUserId).document(task.id).set(task).await()

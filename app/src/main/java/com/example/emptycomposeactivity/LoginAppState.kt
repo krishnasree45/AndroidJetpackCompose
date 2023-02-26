@@ -3,7 +3,6 @@ package com.example.emptycomposeactivity
 import android.util.Log
 import androidx.compose.runtime.Stable
 import androidx.navigation.NavHostController
-import kotlinx.coroutines.CoroutineScope
 
 @Stable
 class LoginAppState(
