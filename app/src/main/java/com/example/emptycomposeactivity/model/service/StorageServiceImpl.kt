@@ -1,19 +1,23 @@
 package com.example.emptycomposeactivity.model.service
 
+import android.util.Log
 import com.example.emptycomposeactivity.model.WellnessTask
 import com.google.firebase.firestore.CollectionReference
-import kotlinx.coroutines.flow.Flow
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.snapshots
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.firestore.ktx.toObjects
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.tasks.asDeferred
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class StorageServiceImpl @Inject
-                         constructor(private val firestore: FirebaseFirestore, private val auth: LoginService) : StorageService {
+constructor(private val firestore: FirebaseFirestore, private val auth: LoginService) :
+    StorageService {
 
     override val tasks: Flow<List<WellnessTask>>
         get() =
@@ -28,7 +32,7 @@ class StorageServiceImpl @Inject
         currentCollection(auth.currentUserId).add(task).await().id
 
 
-    override suspend fun update(task: WellnessTask) :Unit {
+    override suspend fun update(task: WellnessTask): Unit {
         currentCollection(auth.currentUserId).document(task.id).set(task).await()
     }
 
@@ -37,9 +41,11 @@ class StorageServiceImpl @Inject
     }
 
     override suspend fun deleteAllForUser(userId: String) {
-        TODO("Not yet implemented")
+        Log.d("StorageServiceImpl", "deleteAllForUser Before")
+        val matchingTasks = currentCollection(userId).get().await()
+        matchingTasks.map { it.reference.delete().asDeferred() }.awaitAll()
+        Log.d("StorageServiceImpl", "deleteAllForUser After")
     }
-
 
     private fun currentCollection(uid: String): CollectionReference =
         firestore.collection(USER_COLLECTION).document(uid).collection(TASK_COLLECTION)

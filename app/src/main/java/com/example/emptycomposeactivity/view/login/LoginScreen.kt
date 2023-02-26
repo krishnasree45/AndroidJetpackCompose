@@ -13,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 
@@ -52,6 +53,7 @@ fun LoginScreen(
                 .fillMaxWidth()
                 .padding(16.dp, 4.dp),
             placeholder = { Text("Password") },
+            visualTransformation = PasswordVisualTransformation(),
             leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "Lock") },
         )
 
@@ -64,42 +66,16 @@ fun LoginScreen(
         ) {
             Text(text = "Sign in")
         }
-
-
     }
 }
 
-
-//
+//@Preview
 //@Composable
-//fun LoginScreen(
-//    openAndPopUp: (String, String) -> Unit,
-//    modifier: Modifier = Modifier,
-//    viewModel: LoginViewModel = viewModel()
-//){
-//    val uiState by viewModel.uiState
-//
-//    BasicToolbar("Enter your Login Details")
-//
-//    Column(
-//        modifier = modifier
-//            .fillMaxWidth()
-//            .fillMaxHeight()
-//            .verticalScroll(rememberScrollState()),
-//        verticalArrangement = Arrangement.Center,
-//        horizontalAlignment = Alignment.CenterHorizontally
-//    ) {
-//        EmailField(uiState.email, viewModel::onEmailChange, Modifier.fieldModifier())
-//        PasswordField(uiState.password, viewModel::onPasswordChange, Modifier.fieldModifier())
-//
-//        BasicButton(AppText.sign_in, Modifier.basicButton()) { viewModel.onSignInClick(openAndPopUp) }
-//
-//        BasicTextButton(AppText.forgot_password, Modifier.textButton()) {
-//            viewModel.onForgotPasswordClick()
-//        }
-//    }
+//fun LoginPreview(){
+//    LoginScreen(openAndPopUp = {
+//        _, _ ->
+//    })
 //}
-
 
 @Composable
 fun BasicToolbar(title: String) {

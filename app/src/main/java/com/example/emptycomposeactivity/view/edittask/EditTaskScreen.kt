@@ -23,9 +23,6 @@ fun EditTaskScreen(
 ) {
     val task by editTaskScreenViewModel.task
 
-//    LaunchedEffect(Unit){
-//        editTaskScreenViewModel.initialize(taskId = task.id)
-//    }
 
     Column(
         modifier = modifier

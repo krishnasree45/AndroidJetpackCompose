@@ -47,12 +47,5 @@ class LoginViewModel @Inject constructor(
             loginService.authenticate(email, password)
             openAndPopUp(SETTINGS_SCREEN, LOGIN_SCREEN)
         }
-
-
-//        // Use ViewModelScope.launch
-//        launchCatching {
-//            accountService.authenticate(email, password)
-//            openAndPopUp(SETTINGS_SCREEN, LOGIN_SCREEN)
-//        }
     }
 }

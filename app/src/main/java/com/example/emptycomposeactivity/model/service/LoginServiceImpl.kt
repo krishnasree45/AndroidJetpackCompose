@@ -44,16 +44,18 @@ class LoginServiceImpl @Inject constructor(
 
     override suspend fun signOut() {
         if(firebaseAuth.currentUser!!.isAnonymous){
-            /**
-             * TODO add delete account feature
-             */
+            firebaseAuth.currentUser!!.delete()
         } else {
             firebaseAuth.signOut()
         }
-        firebaseAuth.signInAnonymously()
+        firebaseAuth.signInAnonymously().await()
 
     }
 
-
+    override suspend fun deleteAccount() {
+        Log.d("LoginServiceImpl", "deleteAccount Before")
+        firebaseAuth.currentUser!!.delete().await()
+        Log.d("LoginServiceImpl", "deleteAccount After")
+    }
 
 }

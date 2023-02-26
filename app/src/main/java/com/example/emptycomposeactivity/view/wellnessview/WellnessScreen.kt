@@ -93,53 +93,11 @@ fun TaskItem(
 
         Text(text = wellnessTask.label)
 
+        Spacer(modifier = Modifier.weight(1f))
+
         IconButton(onClick = { wellnessTaskViewModel.onDeleteTask(wellnessTask) }) {
             Icon(Icons.Filled.Close, contentDescription = "Close task")
         }
 
     }
 }
-//
-//@OptIn(ExperimentalMaterialApi::class)
-//@Composable
-//fun TaskList(
-//    list: List<WellnessTask>,
-//    wellnessTaskViewModel: WellnessViewModel,
-//    onClose: (WellnessTask) -> Unit,
-//) {
-//    val context = LocalContext.current
-//
-//    LazyColumn() {
-//        items(list) { task ->
-//            val name = rememberSaveable { mutableStateOf(task.checked) }
-//
-//            ListItem(
-//                text = { Text(text = task.label) },
-//
-//                trailing = {
-//
-//                    Row() {
-//                        Checkbox(
-//                            checked = name.value,
-//                            onCheckedChange = {
-//                                name.value = it
-////                                task.checked = name.value
-//                                wellnessTaskViewModel.updateWellnessTask(task)
-//
-////                                Toast.makeText(context, "Updated todo!", Toast.LENGTH_SHORT).show()
-//                            },
-//                        )
-//
-//                        IconButton(onClick = { onClose(task) }) {
-//                            Icon(Icons.Filled.Close, contentDescription = "Close")
-//                        }
-//                    }
-//
-//                },
-//
-//                )
-//            Divider()
-//        }
-//    }
-//
-//}
