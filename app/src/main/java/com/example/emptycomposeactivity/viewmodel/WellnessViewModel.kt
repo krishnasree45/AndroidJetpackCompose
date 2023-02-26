@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.emptycomposeactivity.data.WellnessTaskDatabase
 import com.example.emptycomposeactivity.model.WellnessTask
@@ -21,8 +20,10 @@ class WellnessViewModel(application: Application) : AndroidViewModel(application
 
     val readAllData: LiveData<List<WellnessTask>>
     private val repository: WellnessTaskRepository
-        init {
-        val wellnessTaskDao = WellnessTaskDatabase.getDatabase(application.applicationContext).wellnessTaskDao()
+
+    init {
+        val wellnessTaskDao =
+            WellnessTaskDatabase.getDatabase(application.applicationContext).wellnessTaskDao()
         repository = WellnessTaskRepository(wellnessTaskDao)
         readAllData = repository.readAllData
     }
@@ -42,14 +43,14 @@ class WellnessViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
-    fun removeWellnessTask(wellnessTask: WellnessTask){
-        viewModelScope.launch( Dispatchers.IO ) {
+    fun removeWellnessTask(wellnessTask: WellnessTask) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.removeTask(wellnessTask)
         }
     }
 
-    fun updateWellnessTask(wellnessTask: WellnessTask){
-        viewModelScope.launch( Dispatchers.IO ) {
+    fun updateWellnessTask(wellnessTask: WellnessTask) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.updateTask(wellnessTask)
         }
     }

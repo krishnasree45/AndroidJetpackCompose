@@ -42,7 +42,7 @@ private fun insertToDB(wellnessViewModel: WellnessViewModel, count: Int) {
     wellnessViewModel.addWellnessTask(
         WellnessTask(
             count,
-            "Task # ${ wellnessViewModel.readAllData.value?.size }"
+            "Task # ${wellnessViewModel.readAllData.value?.size}"
         )
     )
 

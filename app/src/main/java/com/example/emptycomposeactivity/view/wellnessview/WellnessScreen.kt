@@ -29,20 +29,10 @@ fun WellnessScreen(
     val items = wellnessViewModel.readAllData.observeAsState(listOf()).value
 
     Column(modifier = modifier) {
-        StatefulCounter()
         AddTaskView()
         TaskList(items,wellnessViewModel, onClose = {
             task -> wellnessViewModel.removeWellnessTask(task)
         })
-//        WellnessTasksList(
-//            list = wellnessViewModel.tasks,
-//            onCheckedTask = { task, checked ->
-//                wellnessViewModel.changeTaskChecked(task, checked)
-//            },
-//            onCloseTask = { task ->
-//                wellnessViewModel.removeWellnessTask(task)
-//            }
-//        )
     }
 }
 

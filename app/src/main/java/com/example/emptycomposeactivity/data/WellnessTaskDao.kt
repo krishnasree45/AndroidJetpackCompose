@@ -3,7 +3,6 @@ package com.example.emptycomposeactivity.data
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.emptycomposeactivity.model.WellnessTask
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface WellnessTaskDao {

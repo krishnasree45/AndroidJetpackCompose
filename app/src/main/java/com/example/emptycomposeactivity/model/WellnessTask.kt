@@ -7,7 +7,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity (tableName = "wellnessTasks")
+@Entity(tableName = "wellnessTasks")
 data class WellnessTask(
 
     @PrimaryKey(autoGenerate = true)
@@ -19,6 +19,5 @@ data class WellnessTask(
 
     @ColumnInfo(name = "checkedValue")
     var checked: Boolean = false,
-){
-//    var checked: Boolean by mutableStateOf(initialChecked)
+) {
 }
